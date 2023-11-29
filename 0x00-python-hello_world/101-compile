@@ -1,0 +1,19 @@
+#!/bin/bash
+
+file="$PYFILE"
+
+echo "Compiling $file ..."
+
+# Check if environment variable is available
+if [ -z "$PYFILE" ]; then
+   echo "Environment variable not set"
+   exit 1
+fi
+
+python -m py_compile "$file"  # compile
+
+output_file="${PYFILE}c"
+
+mv __pycache__/*.pyc "$output_file" # Rename
+
+rm -r __pycache__  # Remove directory
