@@ -2,7 +2,7 @@
 
 if __name__ == '__main__':
     import sys
-    import calculator_1
+    from calculator_1 import add, sub, mul, div
 
     def calculator():
         """ A calculator that handles basic operations
@@ -22,13 +22,13 @@ if __name__ == '__main__':
 
         result = 0
         if operator == '+':
-            result = num1 + num2
+            result = add(num1, num2)
         elif operator == '-':
-            result = num1 - num2
+            result = sub(num1, num2)
         elif operator == '*':
-            result = num1 * num2
+            result = mul(num1, num2)
         elif operator == '/':
-            result = num1 / num2
+            result = div(num1, num2)
         else:
             print('Unknown operator. Available operators: +, -, * and /')
             sys.exit(1)
