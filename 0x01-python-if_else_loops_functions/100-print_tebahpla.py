@@ -1,16 +1,16 @@
 #!/usr/bin/python3
 
-r, indicator = 0, 0
+char_code, indicator = 0, 0
 for x in range(0, 26):
 
     # Switch between lowercase and uppercase
-    if not r:
-        r = chr(122)
+    if not char_code:
+        char_code = chr(122)  # Starting point from 'z'
     elif not indicator:
-        r = chr(ord(r) - 32 - 1)
+        char_code = chr(ord(char_code) - 32 - 1)
         indicator = 1
     elif indicator:
-        r = chr(ord(r) + 32 - 1)
+        char_code = chr(ord(char_code) + 32 - 1)
         indicator = 0
 
-    print('{}'.format(r), end='')  # output current character
+    print('{}'.format(char_code), end='')  # Output current character
