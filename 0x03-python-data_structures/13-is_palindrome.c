@@ -1,6 +1,5 @@
 #include "lists.h"
 
-
 /**
  * reverse_values - Initializes an array to the data in @listint_t
  * and reverses the array
@@ -10,30 +9,20 @@
  *
  * Return: An array of integers
  */
-int *reverse_values(listint_t *head, int size)
+listint_t *reverse_list(listint_t *start)
 {
-	int i, j, *numbers = malloc(sizeof(int) * size);
+	listint_t *prev = NULL;
+	listint_t *curr = start;
+	listint_t *next = NULL;
 
-	if (!numbers)
-		return (NULL);
-
-	/* initialize array */
-	for (i = 0; i < size; i++)
+	while (curr)
 	{
-		numbers[i] = head->n;
-		head = head->next;
+		next = curr->next;
+		curr->next = prev;
+		prev = curr;
+		curr = next;
 	}
-	/* reverse array */
-	for (i = 0, j = --size; i < j; i++, j--)
-	{
-		/* Swap */
-		int temp = numbers[i];
-
-		numbers[i] = numbers[j];
-		numbers[j] = temp;
-	}
-
-	return (numbers);
+	return (prev);
 }
 
 /**
@@ -43,37 +32,55 @@ int *reverse_values(listint_t *head, int size)
  *
  * Return: 1 if it a palindome 0 otherwise
  */
-int is_palindrome(listint_t **head)
-{
-	int arraySize = 0, i, *numbers = NULL;
-	listint_t *temp = NULL;
+int is_palindrome(listint_t **head) {
+    listint_t *slow = *head;
+    listint_t *fast = *head;
+    listint_t *prev_slow = *head;
+    listint_t *second_half = NULL;
+    listint_t *mid_node = NULL, *temp_head, *reversed_second_half;
+    int is_pal = 1;
 
-	/* get number of nodes */
-	temp = *head;
-	while (temp)
-	{
-		arraySize++;
-		temp = temp->next;
-	}
-	/* initialize and reverse array */
-	if (arraySize)
-	{
-		numbers = reverse_values(*head, arraySize);
-		if (!numbers)
-			return (0);
-	}
-	i = 0;
-	temp = *head;
-	while (temp) /* compare */
-	{
-		/* Not equal to it revered values form not a palindrome */
-		if (numbers[i] != temp->n)
-			return (0);
+    /* Empty list or single element is a palindrome */
+    if (!*head || !(*head)->next)
+        return 1;
 
-		i++;
-		temp = temp->next;
-	}
+    /* Finding the middle and end of the first half of the list */
+    while (fast && fast->next) {
+        fast = fast->next->next;
+        prev_slow = slow;
+        slow = slow->next;
+    }
 
-	free(numbers);
-	return (1);
+    /* Handling odd number of elements */
+    if (fast) {
+        mid_node = slow;
+        slow = slow->next;
+    }
+
+    /* Reversing the second half of the list */
+    second_half = reverse_list(slow);
+
+    /* Comparing the first and second halves of the list */
+    temp_head = *head;
+    while (second_half) {
+        if (temp_head->n != second_half->n) {
+            is_pal = 0; /* Not a palindrome */
+            break;
+        }
+        temp_head = temp_head->next;
+        second_half = second_half->next;
+    }
+
+    /* Restoring the original list by reversing the second half again */
+    reversed_second_half = reverse_list(second_half);
+
+    /* Reconnecting the first and second halves */
+    if (mid_node) {
+        prev_slow->next = mid_node;
+        mid_node->next = reversed_second_half;
+    } else {
+        prev_slow->next = reversed_second_half;
+    }
+
+    return is_pal;
 }
