@@ -29,12 +29,14 @@ class Square:
         x, y = self.position[0], self.position[1]  # (x, y)
 
         if self.size:
-            if y > 0:
-                for _ in range(y):
-                    output += '\n'
+            # y (vertical spacing)
+            for _ in range(y):
+                output += '\n'
+
             if x:
                 # x is specified
-                for _ in range(x):
+                for _ in range(self.size):
+                    # horizontal spacing + size of the square + newline
                     output += ' ' * x + '#' * self.size + '\n'
             else:
                 # x is not specified so use the size
