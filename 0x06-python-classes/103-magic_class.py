@@ -14,7 +14,7 @@ class MagicClass:
         area(): area of the circle
         circumference: circumference of a circle
     """
-    def __init__(self, radius):
+    def __init__(self, radius=0):
         if type(radius) is not int:
             if type(radius) is not float:
                 raise TypeError('radius must be a number')
