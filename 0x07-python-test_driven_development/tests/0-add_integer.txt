@@ -1,0 +1,43 @@
+
+
+Addition with two integers
+a and b must be an integer or a float, for floats it will be type casted to integer
+
+Example:
+    >>> add_integer = __import__('0-add_integer').add_integer
+
+    Positive integers
+    >>> add_integer(2, 5)
+    7
+
+    Negative integers
+    >>> add_integer(-1, -1)
+    -2
+
+    Floating point numbers will be type casted to integer
+    >>> add_integer(2.5, 3.4)
+    5
+
+    Zero
+    >>> add_integer(-200, 200)
+    0
+
+    Addition with a negative number
+    >>> add_integer(-1, 1)
+    0
+
+    Default value of b set to 98
+    >>> add_integer(44)
+    142
+
+    Test with large inputs
+    >>> add_integer(1e022, 2e122)
+    200000000000000002881189517449054771166223724485662526027424629870997854138252263253726515251452912171010874366592467075072
+
+    Exceptions:
+        Raise an exception with string or list (including any other types)
+
+        >>> add_integer('1', [1, 2])
+        Traceback (most recent call last):
+            ...
+        TypeError: a must be an integer
