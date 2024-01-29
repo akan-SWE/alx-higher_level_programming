@@ -1,0 +1,21 @@
+
+Example:
+    >>> print_square = __import__('4-print_square').print_square
+
+    Size is an integer greater than 0
+    >>> print_square(6)
+    ######
+    ######
+    ######
+    ######
+    ######
+    ######
+
+    Size is 0
+    >>> print_square(0)
+
+    Size is less than 0
+    >>> print_square(-1)
+    Traceback (most recent call last):
+        ...
+    ValueError: size must be >= 0
