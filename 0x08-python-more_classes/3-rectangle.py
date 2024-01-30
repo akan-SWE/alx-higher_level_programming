@@ -17,7 +17,7 @@ class Rectangle:
     Methods:
         area: area of the Rectangle (h * w)
         perimeter: perimeter of the Rectangle 2(h + w)
-        str: returns the string representable of the Rectangle object
+        __str__: return the rectangle with the character '#'
     """
 
     def __init__(self, width=0, height=0):
