@@ -35,7 +35,7 @@ class Rectangle:
     def __str__(self):
         # if width or height is equal to 0, return an empty string
         return "" if not self.width or not self.height \
-            else ('#' * self.width + '\n') * self.height
+            else (('#' * self.width + '\n') * self.height)[:-1]
 
     @property
     def height(self):
