@@ -1,0 +1,15 @@
+
+Creates a list derived from the list class
+
+Example:
+
+    Test case
+    >>> MyList = __import__('1-my_list').MyList
+
+    >>> l = MyList()
+    >>> l.append(2)
+    >>> l.append(1)
+    >>> l.append(5)
+    >>> l.append(4)
+    >>> l.print_sorted()
+    [1, 2, 4, 5]
