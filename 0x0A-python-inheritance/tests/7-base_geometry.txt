@@ -1,0 +1,25 @@
+
+BaseGeometry class testing the newly added method integer_validator
+
+Example:
+
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+    >>> b = BaseGeometry()
+
+    Normal cases no exception
+    >>> b.integer_validator('num', 9)
+
+    value is not an integer
+    >>> b.integer_validator('num', '3')
+    Traceback (most recent call last):
+        ...
+    TypeError: num must be an integer
+
+    value is less than or equal to 0
+    >>> b.integer_validator('num', 0)
+    Traceback (most recent call last):
+        ...
+    ValueError: num must be greater than 0
+
+
+All test cases passed
