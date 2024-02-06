@@ -10,6 +10,7 @@ class MyList(list):
         print_sorted: print a list in sorted order
     """
     def print_sorted(self):
-        """sort the list and output the result"""
-        self.sort()
-        print(self)
+        """sort the list, output the result and return a new list"""
+        sorted_list = sorted(self)
+        print(sorted_list)
+        return sorted_list
