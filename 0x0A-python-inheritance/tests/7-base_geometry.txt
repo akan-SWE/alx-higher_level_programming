@@ -1,22 +1,67 @@
 
-BaseGeometry class testing the newly added method integer_validator
+BaseGeometry class test cases
 
 Example:
+
 
     >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
     >>> b = BaseGeometry()
 
-    Normal cases no exception
+    Test cases on the area method
+    >>> b.area()
+    Traceback (most recent call last):
+        ...
+    Exception: area() is not implemented
+
+    Test cases on integer_validator
+
+    Correct value passed
     >>> b.integer_validator('num', 9)
 
-    value is not an integer
+    value as string
     >>> b.integer_validator('num', '3')
+    Traceback (most recent call last):
+        ...
+    TypeError: num must be an integer
+
+    value as list
+    >>> b.integer_validator('num', [1, 2, 3])
+    Traceback (most recent call last):
+        ...
+    TypeError: num must be an integer
+
+    value as tuple
+    >>> b.integer_validator('num', (1, 2, 3))
+    Traceback (most recent call last):
+        ...
+    TypeError: num must be an integer
+
+    value as set
+    >>> b.integer_validator('num', {1, 2, 3})
+    Traceback (most recent call last):
+        ...
+    TypeError: num must be an integer
+
+    value as a boolean
+    >>> b.integer_validator('num', True)
+    Traceback (most recent call last):
+        ...
+    TypeError: num must be an integer
+
+    value is None
+    >>> b.integer_validator('num', None)
     Traceback (most recent call last):
         ...
     TypeError: num must be an integer
 
     value is less than or equal to 0
     >>> b.integer_validator('num', 0)
+    Traceback (most recent call last):
+        ...
+    ValueError: num must be greater than 0
+
+    value is a negative number
+    >>> b.integer_validator('num', -1)
     Traceback (most recent call last):
         ...
     ValueError: num must be greater than 0
