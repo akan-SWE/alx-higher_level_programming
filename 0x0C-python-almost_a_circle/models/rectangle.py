@@ -115,4 +115,5 @@ class Rectangle(Base):
 
     def display(self):
         """Displays the rectangle instance with the character #"""
-        print("\n".join(['#' * self.width] * self.height))
+        print('\n' * self.y + "\n".join([(' ' * self.x) + '#' * self.width]
+                                        * self.height))
