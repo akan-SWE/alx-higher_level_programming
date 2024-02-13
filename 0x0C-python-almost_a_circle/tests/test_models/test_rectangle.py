@@ -70,14 +70,14 @@ class TestRectangle(unittest.TestCase):
 
     def test_display(self):
         """Test the Display method"""
-        r = Rectangle(3, 2)
+        r = Rectangle(3, 2, 2, 2)
 
         with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
             r.display()
             printed_output = mock_stdout.getvalue()
 
-        expected_output = "###\n" \
-                          "###\n"
+        expected_output = "\n\n  ###\n" \
+                          "  ###\n"
         self.assertEqual(printed_output, expected_output)
 
     def test_str(self):
