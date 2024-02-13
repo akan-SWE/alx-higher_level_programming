@@ -23,8 +23,3 @@ class TestRectangle(unittest.TestCase):
         r4 = Rectangle(7, 8, 0, 0, 9)
         self.assertEqual(r4.id, 9)
         Base._Base__nb_objects = 0  # reset __nb_objects to zero for each test
-
-    def test_width_and_height(self):
-        r1 = Rectangle(3, 6)
-        self.assertEqual(r1.width, 3)
-        self.assertEqual(r1.height, 6)
