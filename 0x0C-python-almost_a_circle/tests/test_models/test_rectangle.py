@@ -79,3 +79,8 @@ class TestRectangle(unittest.TestCase):
         expected_output = "###\n" \
                           "###\n"
         self.assertEqual(printed_output, expected_output)
+
+    def test_str(self):
+        """Test the __str__ method"""
+        r = Rectangle(3, 2, 1, 1)
+        self.assertEqual('[Rectangle] (1) 1/1 - 3/2', r.__str__())
