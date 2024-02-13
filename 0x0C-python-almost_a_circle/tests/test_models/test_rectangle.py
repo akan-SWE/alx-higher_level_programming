@@ -10,17 +10,17 @@ class TestRectangle(unittest.TestCase):
         Base._Base__nb_objects = 0  # reset __nb_objects to zero for each test
 
     def test_id_increment_when_none(self):
-        """test that __nb_objects increment when id is None"""
+        """Test that __nb_objects increment when id is None"""
         r = Rectangle(1, 2)
         self.assertEqual(r.id, 1)
 
     def test_id_when_not_none(self):
-        """test that self.id is assigned id when not None"""
+        """Test that self.id is assigned id when not None"""
         r = Rectangle(2, 4, id=16)
         self.assertEqual(r.id, 16)
 
     def test_id_with_multiple_instance(self):
-        """test with multiple instances"""
+        """Test with multiple instances"""
         r1 = Rectangle(1, 2)
         r2 = Rectangle(3, 4)
         r3 = Rectangle(5, 6)
@@ -58,3 +58,10 @@ class TestRectangle(unittest.TestCase):
     def test_y_with_values(self):
         """Raises ValueError when y is less than 0"""
         self.assertRaises(ValueError, Rectangle, 1, 2, 3, -1)
+
+    def test_area(self):
+        """Test that the area method correctly returns the area of the
+        rectangle (l * b)
+        """
+        r1 = Rectangle(4, 10)
+        self.assertEqual(r1.area(), 40)
