@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 """Defines the Rectangle class
 
 Classes:
@@ -103,6 +104,10 @@ class Rectangle(Base):
         elif y < 0:
             raise ValueError('y must be >= 0')
         self.__y = y
+
+    def __str__(self):
+        return f'[Rectangle] ({self.id}) {self.x}/{self.y} - ' \
+            f'{self.width}/{self.height}'
 
     def area(self):
         """Returns the area of the rectangle instance (l * b)"""
