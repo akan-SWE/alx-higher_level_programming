@@ -85,10 +85,9 @@ class TestRectangle(unittest.TestCase):
         r = Rectangle(3, 2, 1, 1)
         self.assertEqual('[Rectangle] (1) 1/1 - 3/2', r.__str__())
 
-    def test_update(self):
-        """Test that the update method correctly updates
-        values of attributes
-        """
+    def test_update_without_keys(self):
+        """Test that the update method correctly updates values
+        of attributes when pased as no-keyword argument"""
         r = Rectangle(1, 2, 22, 33, 8)
         r.update(22, 32, 10, 11, 10)
         self.assertEqual(r.id, 22)
@@ -96,3 +95,15 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.height, 10)
         self.assertEqual(r.x, 11)
         self.assertEqual(r.y, 10)
+
+    def test_update_with_keys(self):
+        """Test that the update method correctly updates
+        values of attributes when passed as key-worded argument
+        """
+        r = Rectangle(1, 2, 22, 33, 8)
+        r.update(width=22, height=32, x=10, y=11, id=10)
+        self.assertEqual(r.id, 10)
+        self.assertEqual(r.width, 22)
+        self.assertEqual(r.height, 32)
+        self.assertEqual(r.x, 10)
+        self.assertEqual(r.y, 11)
