@@ -84,3 +84,15 @@ class TestRectangle(unittest.TestCase):
         """Test the __str__ method"""
         r = Rectangle(3, 2, 1, 1)
         self.assertEqual('[Rectangle] (1) 1/1 - 3/2', r.__str__())
+
+    def test_update(self):
+        """Test that the update method correctly updates
+        values of attributes
+        """
+        r = Rectangle(1, 2, 22, 33, 8)
+        r.update(22, 32, 10, 11, 10)
+        self.assertEqual(r.id, 22)
+        self.assertEqual(r.width, 32)
+        self.assertEqual(r.height, 10)
+        self.assertEqual(r.x, 11)
+        self.assertEqual(r.y, 10)
