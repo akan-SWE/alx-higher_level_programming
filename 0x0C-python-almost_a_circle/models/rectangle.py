@@ -121,10 +121,16 @@ class Rectangle(Base):
         print('\n' * self.y + "\n".join([(' ' * self.x) + '#' * self.width]
                                         * self.height))
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """Updates the attribute of the rectangle instance
-        in the order;
+        if args exits and it not None it update in the order;
             id -> width -> height -> x -> y
+        otherwise it uses the kwargs order of keys
         """
-        for i, j in zip(args, self.__dict__):
-            self.__dict__[j] = i
+        iskey = False
+        if not len(args):
+            iskey = True
+            args = kwargs.values()
+
+        for key, value in zip(kwargs if iskey else self.__dict__, args):
+            setattr(self, key, value)
