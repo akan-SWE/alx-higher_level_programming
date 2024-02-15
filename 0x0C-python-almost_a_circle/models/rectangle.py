@@ -5,7 +5,7 @@
 Classes:
         Rectangle: Defines a rectangle
 Example:
-        To use this module import the Base class and create an instance
+        To use this module import the Rectangle class and create an instance
         ```python
         from models.rectangle import Rectangle
 
@@ -36,8 +36,8 @@ class Rectangle(Base):
         height (setter and getter): set and get the height of the rectangle
 
     Example:
-    >>> base = Base()
-    >>> print(base.id)
+    >>> r = Rectangle(3, 2)
+    >>> print(r.id)
     1
     """
 
