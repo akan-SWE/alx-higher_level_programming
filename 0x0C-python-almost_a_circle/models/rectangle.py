@@ -27,6 +27,9 @@ class Rectangle(Base):
 
     Methods:
         __init__: initalize the new instance of the Rectangle class
+        __str__: returns the rectangle in the format
+                [Rectangle] (<id>) <x>/<y> - <width>/<height>
+        display: outputs the representation of rectangle using the character #
 
     Properties:
         width (setter and getter): set and get the width of the rectangle
@@ -39,11 +42,11 @@ class Rectangle(Base):
     """
 
     def __init__(self, width, height, x=0, y=0, id=None):
+        super().__init__(id)  # iniatilize id using the base class
         self.width = width
         self.height = height
         self.x = x
         self.y = y
-        super().__init__(id)  # iniatilize it base
 
     @property
     def width(self):
@@ -117,3 +120,11 @@ class Rectangle(Base):
         """Displays the rectangle instance with the character #"""
         print('\n' * self.y + "\n".join([(' ' * self.x) + '#' * self.width]
                                         * self.height))
+
+    def update(self, *args):
+        """Updates the attribute of the rectangle instance
+        in the order;
+            id -> width -> height -> x -> y
+        """
+        for i, j in zip(args, self.__dict__):
+            self.__dict__[j] = i
