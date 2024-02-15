@@ -101,3 +101,8 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(s.height, 32)
         self.assertEqual(s.x, 10)
         self.assertEqual(s.y, 11)
+
+    def test_size_getter_and_setter(self):
+        s = Square(10)
+        s.size = 20
+        self.assertEqual(s.size, 20)
