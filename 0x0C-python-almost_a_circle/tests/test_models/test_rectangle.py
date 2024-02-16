@@ -107,3 +107,12 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.height, 32)
         self.assertEqual(r.x, 10)
         self.assertEqual(r.y, 11)
+
+    def test_to_dictionary(self):
+        r = Rectangle(10, 2, 1, 9)
+        r_dict = r.to_dictionary()
+        # check if type is a dictionary
+        self.assertIsInstance(r_dict, dict)
+        expected_dict = {'id': 1, 'width': 10, 'height': 2, 'x': 1, 'y': 9}
+        # check if the return value is valid
+        self.assertDictEqual(r_dict, expected_dict)
