@@ -55,3 +55,18 @@ class Square(Rectangle):
 
     def __str__(self):
         return f'[Square] ({self.id}) {self.x}/{self.y} - {self.width}'
+
+    def update(self, *args, **kwargs):
+        """Updates the attribute of the rectangle instance
+        if args exits and it not None it update in the order;
+            id -> size -> x -> y
+        otherwise it uses the kwargs order of keys
+        """
+        iskey = False
+        if not len(args):
+            iskey = True
+            args = kwargs.values()
+
+        attributes = ["id", "size", "x", "y"]
+        for key, value in zip(kwargs if iskey else attributes, args):
+            setattr(self, key, value)
