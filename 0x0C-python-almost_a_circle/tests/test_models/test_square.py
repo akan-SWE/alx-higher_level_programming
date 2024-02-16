@@ -105,3 +105,12 @@ class TestSquare(unittest.TestCase):
         s = Square(10)
         s.size = 20
         self.assertEqual(s.size, 20)
+
+    def test_to_dictionary(self):
+        s = Square(10, 2, 1, 9)
+        s_dict = s.to_dictionary()
+        # check if type is a dictionary
+        self.assertIsInstance(s_dict, dict)
+        expected_dict = {'size': 10, 'x': 2, 'y': 1, 'id': 9}
+        # check if the return value is valid
+        self.assertDictEqual(s_dict, expected_dict)
