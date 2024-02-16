@@ -83,10 +83,10 @@ class TestSquare(unittest.TestCase):
         """Test that the update method correctly updates values
         of attributes when pased as no-keyword argument"""
         s = Square(1)
-        s.update(22, 32, 10, 11, 10)
+        s.update(22, 32, 11, 10)
         self.assertEqual(s.id, 22)
         self.assertEqual(s.width, 32)
-        self.assertEqual(s.height, 10)
+        self.assertEqual(s.height, 32)
         self.assertEqual(s.x, 11)
         self.assertEqual(s.y, 10)
 
@@ -95,10 +95,9 @@ class TestSquare(unittest.TestCase):
         values of attributes when passed as key-worded argument
         """
         s = Square(1)
-        s.update(width=22, height=32, x=10, y=11, id=10)
+        s.update(size=15, x=10, y=11, id=10)
         self.assertEqual(s.id, 10)
-        self.assertEqual(s.width, 22)
-        self.assertEqual(s.height, 32)
+        self.assertEqual(s.size, 15)
         self.assertEqual(s.x, 10)
         self.assertEqual(s.y, 11)
 
