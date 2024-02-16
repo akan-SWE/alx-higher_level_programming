@@ -134,3 +134,12 @@ class Rectangle(Base):
 
         for key, value in zip(kwargs if iskey else self.__dict__, args):
             setattr(self, key, value)
+
+    def to_dictionary(self):
+        """returns a dictionary representing the rectangle instance"""
+        obj_dict = {'id': 0, 'width': 0, 'height': 0, 'x': 0, 'y': 0}
+
+        for key, value in zip(obj_dict, self.__dict__.values()):
+            obj_dict[key] = value
+
+        return obj_dict
