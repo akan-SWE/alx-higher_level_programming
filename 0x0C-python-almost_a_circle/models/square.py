@@ -70,3 +70,13 @@ class Square(Rectangle):
         attributes = ["id", "size", "x", "y"]
         for key, value in zip(kwargs if iskey else attributes, args):
             setattr(self, key, value)
+
+    def to_dictionary(self):
+        """returns a dictionary representing the square instance"""
+        obj_dict = {'id': 0, 'size': 0, 'height': 0, 'x': 0, 'y': 0}
+
+        for key, value in zip(obj_dict, self.__dict__.values()):
+            obj_dict[key] = value
+
+        obj_dict.pop('height')
+        return obj_dict
