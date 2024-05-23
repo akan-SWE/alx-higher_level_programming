@@ -4,8 +4,8 @@
 -- Each record should display: tv_shows.title - tv_genres.name
 -- Results is sorted in ascending order by the show title and genre name.
 
-SELECT ts.title, tg.name
+SELECT ts.title, tg.name 
 FROM tv_shows ts
-LEFT tv_show_genres tsg ON ts.id = tsg.show_id
-JOIN tv_genres tg ON tsg.genre_id = tg.id
+LEFT JOIN tv_show_genres tsg ON ts.id = tsg.show_id
+LEFT JOIN tv_genres tg ON tsg.genre_id = tg.id
 ORDER BY ts.title, tg.name
