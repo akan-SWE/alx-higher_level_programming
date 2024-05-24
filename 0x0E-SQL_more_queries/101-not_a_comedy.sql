@@ -11,7 +11,7 @@ SELECT DISTINCT ts.title
 FROM tv_shows ts
 JOIN tv_show_genres tsg ON ts.id = tsg.show_id
 JOIN tv_genres tg ON tsg.genre_id = tg.id
-WHERE NOT IN (
+WHERE ts.title NOT IN (
     -- Get all shows that are linked to Comedy
     SELECT ts.title
     FROM tv_shows ts
