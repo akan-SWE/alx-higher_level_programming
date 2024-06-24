@@ -22,7 +22,7 @@ def connect(name: str, passwd: str, database: str) -> MySQLdb.Connection:
 
 def list_N_states(cur) -> None:
     """Retrieves all states that their name start with a capital N"""
-    cur.execute("SELECT * FROM states WHERE name LIKE 'N%'")
+    cur.execute("SELECT * FROM states WHERE name LIKE BINARY 'N%'")
     for row in cur.fetchall():
         print(row)
 

@@ -24,7 +24,7 @@ def connect(name: str, passwd: str, database: str) -> MySQLdb.Connection:
 def list_matching_states(cur: Cursor, state_name: str) -> None:
     """Retrieves all states that matches the name specified"""
     cur.execute("SELECT * FROM states "
-                "WHERE name = '{}' ORDER BY id".format(state_name))
+                "WHERE name LIKE BINARY '{}' ORDER BY id".format(state_name))
     for row in cur.fetchall():
         print(row)
 
