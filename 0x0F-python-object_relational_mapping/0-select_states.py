@@ -10,7 +10,7 @@ import sys
 
 
 def extract_args(args: list) -> tuple:
-    """Exract arguments needed from command line"""
+    """Extract arguments needed from command line"""
     return args[1], args[2], args[3]
 
 
