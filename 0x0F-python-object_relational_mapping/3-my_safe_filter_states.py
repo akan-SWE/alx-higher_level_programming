@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 """
-Module: 2-my_filter_states
-
-The script lists all states from the database hbtn_0e_0_usa that matches
-exactly the name passed .
+Module: 3-my_safe_filter_states
+displays all values in the states table of hbtn_0e_0_usa where name
+matches the argument and is safe from MYSQL injections.
 """
 from MySQLdb.cursors import Cursor
 import MySQLdb
@@ -22,17 +21,16 @@ def connect(name: str, passwd: str, database: str) -> MySQLdb.Connection:
 
 
 def list_matching_states(cur: Cursor, state_name: str) -> None:
-    """Retrieves all states that matches the name specified"""
-    cur.execute("SELECT * FROM states "
-                "WHERE name = '{}' ORDER BY id".format(state_name))
+    """Retrieves all states that their name start with a capital N"""
+    statement = "SELECT * FROM states WHERE name = %s ORDER BY id"
+    cur.execute(statement, (state_name,))
     for row in cur.fetchall():
         print(row)
 
 
 def main(argv: list) -> None:
-    """ Main logic
-    It extracts arguments , connects to the database, execute the query
-    and close connections
+    """Main logic - It extracts arguments , connects to the database,
+    execute the query and close connections
     """
     args = extract_args(argv)
     db = connect(*args[:3])
