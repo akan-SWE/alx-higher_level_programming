@@ -1,10 +1,9 @@
 #!/usr/bin/python3
 
 """
-Module: 10-model_state_my_get
+Module:
 
-Prints the State object with the name passed as argument from the
-database hbtn_0e_6_usa
+Adds the State object “Louisiana” to the database hbtn_0e_6_usa
 """
 from sys import argv
 from model_state import Base, State
@@ -33,7 +32,6 @@ if __name__ == '__main__':
                   'username': argv[1],
                   'password': argv[2],
                   'host': 'localhost',
-                  'port': 3306,
                   'database': argv[3]
                   }
     # create multiple connections to the server
@@ -42,12 +40,13 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)  # generate a session
     session = Session()
 
-    # Query
-    query = session.query(State).filter(State.name == argv[4]).all()
-    if query:
-        for row in query:
-            print(row.id)
-    else:
-        print('Not found')
+    # create the State object
+    state = State(name='Louisiana')
+
+    # add object to the table and commit changes
+    session.add(state)
+    session.commit()
+
+    print(state.id)
 
     session.close()  # end connection
