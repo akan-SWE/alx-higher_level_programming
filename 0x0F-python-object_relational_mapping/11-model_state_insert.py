@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-Module:
+Module: 11-model_state_insert
 
 Adds the State object “Louisiana” to the database hbtn_0e_6_usa
 """
