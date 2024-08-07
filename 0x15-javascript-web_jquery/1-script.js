@@ -1,3 +1,4 @@
 #!/usr/bin/node
+/* global $ */
 // Change the color of the header element
-document.querySelector('header').style.color = '#FF0000';
+$('header').css('color', '#FF0000');
