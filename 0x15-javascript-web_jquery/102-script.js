@@ -11,16 +11,4 @@ $(function () {
       }
     });
   });
-
-  // Event listener for Enter key press
-  $('INPUT#language_code').keypress(function (event) {
-    if (event.which === 13) {
-      const lang = $('INPUT#language_code').val(); // Get the value inside the event handler
-      $.get(url + lang, function (data, status) {
-        if (status === 'success') {
-          $('DIV#hello').text(data.hello);
-        }
-      });
-    }
-  });
 });
